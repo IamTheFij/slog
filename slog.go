@@ -4,6 +4,7 @@
 package slog
 
 import (
+	"io"
 	"log"
 	"os"
 )
@@ -25,17 +26,26 @@ var (
 	LoggerError = log.New(os.Stderr, "ERROR   ", defaultFlags)
 	// LoggerDebug is the slog Debug logger
 	LoggerDebug = log.New(os.Stderr, "DEBUG   ", defaultFlags)
-)
 
-// SetFlags allows changing the logger flags using flags found in `log`
-func SetFlags(flag int) {
-	for _, logger := range []*log.Logger{
+	allLoggers = []*log.Logger{
 		LoggerInfo,
 		LoggerWarning,
 		LoggerError,
 		LoggerDebug,
-	} {
+	}
+)
+
+// SetFlags allows changing the logger flags using flags found in `log`
+func SetFlags(flag int) {
+	for _, logger := range allLoggers {
 		logger.SetFlags(flag)
+	}
+}
+
+// SetOutput allows changing the output of all loggers
+func SetOutput(w io.Writer) {
+	for _, logger := range allLoggers {
+		logger.SetOutput(w)
 	}
 }
 

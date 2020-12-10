@@ -22,6 +22,15 @@ Also provided are a few simple methods for handling returned `error` variables, 
     var (
     	// DebugLevel indicates if we should log at the debug level
     	DebugLevel = true
+
+    	// LoggerInfo is the slog Info logger
+    	LoggerInfo = log.New(os.Stderr, "INFO    ", defaultFlags)
+    	// LoggerWarning is the slog Warning logger
+    	LoggerWarning = log.New(os.Stderr, "WARNING ", defaultFlags)
+    	// LoggerError is the slog Error logger
+    	LoggerError = log.New(os.Stderr, "ERROR   ", defaultFlags)
+    	// LoggerDebug is the slog Debug logger
+    	LoggerDebug = log.New(os.Stderr, "DEBUG   ", defaultFlags)
     )
 
     FUNCTIONS
@@ -46,6 +55,9 @@ Also provided are a few simple methods for handling returned `error` variables, 
 
     func SetFlags(flag int)
         SetFlags allows changing the logger flags using flags found in `log`
+
+    func SetOutput(w io.Writer)
+        SetOutput allows changing the output of all loggers
 
     func WarnOnErr(err error, format string, v ...interface{})
         WarnOnErr if error provided, will provide a warning if an error is provided
