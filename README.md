@@ -41,6 +41,9 @@ Also provided are a few simple methods for handling returned `error` variables, 
     func Error(format string, v ...interface{})
         Error will log with a ERROR prefix
 
+    func Fatal(format string, v ...interface{})
+        Fatal will log with a ERROR prefix followed by exit(1)
+
     func FatalOnErr(err error, format string, v ...interface{})
         FatalOnErr if error provided, will log out details of an error and exi
 
@@ -49,6 +52,9 @@ Also provided are a few simple methods for handling returned `error` variables, 
 
     func Log(format string, v ...interface{})
         Log formats logs directly to the main logger
+
+    func Panic(format string, v ...interface{})
+        Panic will log with a ERROR prefix followed by panic()
 
     func PanicOnErr(err error, format string, v ...interface{})
         PanicOnErr if error provided, will log out details of an error and exi

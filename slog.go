@@ -54,6 +54,14 @@ func Log(format string, v ...interface{}) {
 	log.Printf(format, v...)
 }
 
+// Debug will log with a DEBUG prefix if DebugLevel is set
+func Debug(format string, v ...interface{}) {
+	if !DebugLevel {
+		return
+	}
+	LoggerDebug.Printf(format, v...)
+}
+
 // Info formats logs with an INFO prefix
 func Info(format string, v ...interface{}) {
 	LoggerInfo.Printf(format, v...)
@@ -69,12 +77,14 @@ func Error(format string, v ...interface{}) {
 	LoggerError.Printf(format, v...)
 }
 
-// Debug will log with a DEBUG prefix if DebugLevel is set
-func Debug(format string, v ...interface{}) {
-	if !DebugLevel {
-		return
-	}
-	LoggerDebug.Printf(format, v...)
+// Fatal will log with a ERROR prefix followed by exit(1)
+func Fatal(format string, v ...interface{}) {
+	LoggerError.Fatalf(format, v...)
+}
+
+// Panic will log with a ERROR prefix followed by panic()
+func Panic(format string, v ...interface{}) {
+	LoggerError.Panicf(format, v...)
 }
 
 // WarnOnErr if error provided, will provide a warning if an error is provided
