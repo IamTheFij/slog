@@ -49,62 +49,63 @@ func SetOutput(w io.Writer) {
 	}
 }
 
-// Log formats logs directly to the main logger
-func Log(format string, v ...interface{}) {
+// Logf formats logs directly to the main logger
+func Logf(format string, v ...interface{}) {
 	log.Printf(format, v...)
 }
 
-// Debug will log with a DEBUG prefix if DebugLevel is set
-func Debug(format string, v ...interface{}) {
+// Debugf will log with a DEBUG prefix if DebugLevel is set
+func Debugf(format string, v ...interface{}) {
 	if !DebugLevel {
 		return
 	}
+
 	LoggerDebug.Printf(format, v...)
 }
 
-// Info formats logs with an INFO prefix
-func Info(format string, v ...interface{}) {
+// Infof formats logs with an INFO prefix
+func Infof(format string, v ...interface{}) {
 	LoggerInfo.Printf(format, v...)
 }
 
-// Warning will log with a WARNING prefix
-func Warning(format string, v ...interface{}) {
+// Warningf will log with a WARNING prefix
+func Warningf(format string, v ...interface{}) {
 	LoggerWarning.Printf(format, v...)
 }
 
-// Error will log with a ERROR prefix
-func Error(format string, v ...interface{}) {
+// Errorf will log with a ERROR prefix
+func Errorf(format string, v ...interface{}) {
 	LoggerError.Printf(format, v...)
 }
 
-// Fatal will log with a ERROR prefix followed by exit(1)
-func Fatal(format string, v ...interface{}) {
+// Fatalf will log with a ERROR prefix followed by exit(1)
+func Fatalf(format string, v ...interface{}) {
 	LoggerError.Fatalf(format, v...)
 }
 
-// Panic will log with a ERROR prefix followed by panic()
-func Panic(format string, v ...interface{}) {
+// Panicf will log with a ERROR prefix followed by panic()
+func Panicf(format string, v ...interface{}) {
 	LoggerError.Panicf(format, v...)
 }
 
-// WarnOnErr if error provided, will provide a warning if an error is provided
-func WarnOnErr(err error, format string, v ...interface{}) {
+// OnErrWarnf if error provided, will provide a warning if an error is provided
+func OnErrWarnf(err error, format string, v ...interface{}) {
 	if err != nil {
 		LoggerWarning.Printf(format, v...)
 		LoggerError.Print(err)
 	}
 }
 
-// FatalOnErr if error provided, will log out details of an error and exit
-func FatalOnErr(err error, format string, v ...interface{}) {
+// OnErrFatalf if error provided, will log out details of an error and exit
+func OnErrFatalf(err error, format string, v ...interface{}) {
 	if err != nil {
 		LoggerError.Printf(format, v...)
 		LoggerError.Fatal(err)
 	}
 }
 
-// PanicOnErr if error provided, will log out details of an error and exit
-func PanicOnErr(err error, format string, v ...interface{}) {
+// OnErrPanicf if error provided, will log out details of an error and exit
+func OnErrPanicf(err error, format string, v ...interface{}) {
 	if err != nil {
 		LoggerError.Printf(format, v...)
 		LoggerError.Panic(err)

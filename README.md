@@ -35,29 +35,32 @@ Also provided are a few simple methods for handling returned `error` variables, 
 
     FUNCTIONS
 
-    func Debug(format string, v ...interface{})
-        Debug will log with a DEBUG prefix if DebugLevel is se
+    func Debugf(format string, v ...interface{})
+        Debugf will log with a DEBUG prefix if DebugLevel is se
 
-    func Error(format string, v ...interface{})
-        Error will log with a ERROR prefix
+    func Errorf(format string, v ...interface{})
+        Errorf will log with a ERROR prefix
 
-    func Fatal(format string, v ...interface{})
-        Fatal will log with a ERROR prefix followed by exit(1)
+    func Fatalf(format string, v ...interface{})
+        Fatalf will log with a ERROR prefix followed by exit(1)
 
-    func FatalOnErr(err error, format string, v ...interface{})
-        FatalOnErr if error provided, will log out details of an error and exi
+    func Infof(format string, v ...interface{})
+        Infof formats logs with an INFO prefix
 
-    func Info(format string, v ...interface{})
-        Info formats logs with an INFO prefix
+    func Logf(format string, v ...interface{})
+        Logf formats logs directly to the main logger
 
-    func Log(format string, v ...interface{})
-        Log formats logs directly to the main logger
+    func OnErrFatalf(err error, format string, v ...interface{})
+        OnErrFatalf if error provided, will log out details of an error and exi
 
-    func Panic(format string, v ...interface{})
-        Panic will log with a ERROR prefix followed by panic()
+    func OnErrPanicf(err error, format string, v ...interface{})
+        OnErrPanicf if error provided, will log out details of an error and exi
 
-    func PanicOnErr(err error, format string, v ...interface{})
-        PanicOnErr if error provided, will log out details of an error and exi
+    func OnErrWarnf(err error, format string, v ...interface{})
+        OnErrWarnf if error provided, will provide a warning if an error is provided
+
+    func Panicf(format string, v ...interface{})
+        Panicf will log with a ERROR prefix followed by panic()
 
     func SetFlags(flag int)
         SetFlags allows changing the logger flags using flags found in `log`
@@ -65,8 +68,5 @@ Also provided are a few simple methods for handling returned `error` variables, 
     func SetOutput(w io.Writer)
         SetOutput allows changing the output of all loggers
 
-    func WarnOnErr(err error, format string, v ...interface{})
-        WarnOnErr if error provided, will provide a warning if an error is provided
-
-    func Warning(format string, v ...interface{})
-        Warning will log with a WARNING prefix
+    func Warningf(format string, v ...interface{})
+        Warningf will log with a WARNING prefix
