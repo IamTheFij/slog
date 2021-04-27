@@ -11,7 +11,7 @@ Slog lets you hide or show debug logs as well as provides a simpler way to log m
 Also provided are a few simple methods for handling returned `error` variables, logging them out and optionally panicing or fatally exiting.
 
 ## Documentation
-    package slog // import "git.iamthefij.com/iamthefij/slog"
+    package slog // import "git.iamthefij.com/iamthefij/slog/v2"
 
     Package slog is a super simple logger that allows a few convenience methods
     for handling debug vs warning/error logs. It also adds a few conveniences
