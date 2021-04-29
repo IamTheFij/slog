@@ -18,5 +18,5 @@ check:
 	pre-commit run --all-files
 
 
-README.md: ./add-docs-to-readme.sh *.go go.mod
+README.md: ./add-docs-to-readme.sh *.go
 	./add-docs-to-readme.sh
