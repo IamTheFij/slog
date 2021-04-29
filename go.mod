@@ -1,3 +1,3 @@
-module git.iamthefij.com/iamthefij/slog/v2
+module git.iamthefij.com/iamthefij/slog
 
 go 1.15
