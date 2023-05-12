@@ -54,6 +54,15 @@ func Logf(format string, v ...interface{}) {
 	log.Printf(format, v...)
 }
 
+// Debug will log with a DEBUG prefix if DebugLevel is set
+func Debug(v ...interface{}) {
+	if !DebugLevel {
+		return
+	}
+
+	LoggerDebug.Print(v...)
+}
+
 // Debugf will log with a DEBUG prefix if DebugLevel is set
 func Debugf(format string, v ...interface{}) {
 	if !DebugLevel {
@@ -63,9 +72,29 @@ func Debugf(format string, v ...interface{}) {
 	LoggerDebug.Printf(format, v...)
 }
 
+// Print formats logs with an INFO prefix
+func Print(v ...interface{}) {
+	LoggerInfo.Print(v...)
+}
+
+// Printf formats logs with an INFO prefix
+func Printf(format string, v ...interface{}) {
+	LoggerInfo.Printf(format, v...)
+}
+
+// Info formats logs with an INFO prefix
+func Info(v ...interface{}) {
+	LoggerInfo.Print(v...)
+}
+
 // Infof formats logs with an INFO prefix
 func Infof(format string, v ...interface{}) {
 	LoggerInfo.Printf(format, v...)
+}
+
+// Warning will log with a WARNING prefix
+func Warning(v ...interface{}) {
+	LoggerWarning.Print(v...)
 }
 
 // Warningf will log with a WARNING prefix
@@ -73,14 +102,29 @@ func Warningf(format string, v ...interface{}) {
 	LoggerWarning.Printf(format, v...)
 }
 
+// Error will log with a ERROR prefix
+func Error(v ...interface{}) {
+	LoggerError.Print(v...)
+}
+
 // Errorf will log with a ERROR prefix
 func Errorf(format string, v ...interface{}) {
 	LoggerError.Printf(format, v...)
 }
 
+// Fatal will log with a ERROR prefix followed by exit(1)
+func Fatal(v ...interface{}) {
+	LoggerError.Fatal(v...)
+}
+
 // Fatalf will log with a ERROR prefix followed by exit(1)
 func Fatalf(format string, v ...interface{}) {
 	LoggerError.Fatalf(format, v...)
+}
+
+// Panic will log with a ERROR prefix followed by panic()
+func Panic(v ...interface{}) {
+	LoggerError.Panic(v...)
 }
 
 // Panicf will log with a ERROR prefix followed by panic()
