@@ -174,23 +174,31 @@ func Panicf(format string, v ...interface{}) {
 // OnErrWarnf if error provided, will provide a warning if an error is provided
 func OnErrWarnf(err error, format string, v ...interface{}) {
 	if err != nil {
-		LoggerWarning.Printf(format, v...)
-		LoggerError.Print(err)
+		Warningf(format, v...)
+		Error(err)
+	}
+}
+
+// OnErrErrorf if error provided, will provide a warning if an error is provided
+func OnErrErrorf(err error, format string, v ...interface{}) {
+	if err != nil {
+		Errorf(format, v...)
+		Error(err)
 	}
 }
 
 // OnErrFatalf if error provided, will log out details of an error and exit
 func OnErrFatalf(err error, format string, v ...interface{}) {
 	if err != nil {
-		LoggerError.Printf(format, v...)
-		LoggerError.Fatal(err)
+		Errorf(format, v...)
+		Fatal(err)
 	}
 }
 
 // OnErrPanicf if error provided, will log out details of an error and exit
 func OnErrPanicf(err error, format string, v ...interface{}) {
 	if err != nil {
-		LoggerError.Printf(format, v...)
-		LoggerError.Panic(err)
+		Errorf(format, v...)
+		Panic(err)
 	}
 }
