@@ -63,6 +63,15 @@ func Debug(v ...interface{}) {
 	LoggerDebug.Print(v...)
 }
 
+// Debugln will log with a DEBUG prefix if DebugLevel is set
+func Debugln(v ...interface{}) {
+	if !DebugLevel {
+		return
+	}
+
+	LoggerDebug.Println(v...)
+}
+
 // Debugf will log with a DEBUG prefix if DebugLevel is set
 func Debugf(format string, v ...interface{}) {
 	if !DebugLevel {
@@ -77,6 +86,11 @@ func Print(v ...interface{}) {
 	LoggerInfo.Print(v...)
 }
 
+// Println formats logs with an INFO prefix
+func Println(v ...interface{}) {
+	LoggerInfo.Println(v...)
+}
+
 // Printf formats logs with an INFO prefix
 func Printf(format string, v ...interface{}) {
 	LoggerInfo.Printf(format, v...)
@@ -85,6 +99,11 @@ func Printf(format string, v ...interface{}) {
 // Info formats logs with an INFO prefix
 func Info(v ...interface{}) {
 	LoggerInfo.Print(v...)
+}
+
+// Infoln formats logs with an INFO prefix
+func Infoln(v ...interface{}) {
+	LoggerInfo.Println(v...)
 }
 
 // Infof formats logs with an INFO prefix
@@ -97,6 +116,11 @@ func Warning(v ...interface{}) {
 	LoggerWarning.Print(v...)
 }
 
+// Warningln will log with a WARNING prefix
+func Warningln(v ...interface{}) {
+	LoggerWarning.Println(v...)
+}
+
 // Warningf will log with a WARNING prefix
 func Warningf(format string, v ...interface{}) {
 	LoggerWarning.Printf(format, v...)
@@ -105,6 +129,11 @@ func Warningf(format string, v ...interface{}) {
 // Error will log with a ERROR prefix
 func Error(v ...interface{}) {
 	LoggerError.Print(v...)
+}
+
+// Errorln will log with a ERROR prefix
+func Errorln(v ...interface{}) {
+	LoggerError.Println(v...)
 }
 
 // Errorf will log with a ERROR prefix
@@ -117,6 +146,11 @@ func Fatal(v ...interface{}) {
 	LoggerError.Fatal(v...)
 }
 
+// Fatalln will log with a ERROR prefix followed by exit(1)
+func Fatalln(v ...interface{}) {
+	LoggerError.Fatalln(v...)
+}
+
 // Fatalf will log with a ERROR prefix followed by exit(1)
 func Fatalf(format string, v ...interface{}) {
 	LoggerError.Fatalf(format, v...)
@@ -125,6 +159,11 @@ func Fatalf(format string, v ...interface{}) {
 // Panic will log with a ERROR prefix followed by panic()
 func Panic(v ...interface{}) {
 	LoggerError.Panic(v...)
+}
+
+// Panicln will log with a ERROR prefix followed by panic()
+func Panicln(v ...interface{}) {
+	LoggerError.Panicln(v...)
 }
 
 // Panicf will log with a ERROR prefix followed by panic()
